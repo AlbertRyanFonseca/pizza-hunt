@@ -15,8 +15,14 @@ const PizzaSchema = new Schema({
         type: String,
         default: 'Large'
     },
-    toppings: []
-});
+},
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false
+    }
+);
 
 // get a total count of comments and replies on retrieval 
 PizzaSchema.virtual('commentCount').get(function () {
