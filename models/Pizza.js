@@ -18,6 +18,11 @@ const PizzaSchema = new Schema({
     toppings: []
 });
 
+// get a total count of comments and replies on retrieval 
+PizzaSchema.virtual('commentCount').get(function () {
+    return this.comments.length;
+});
+
 const Pizza = model('Pizza', PizzaSchema);
 
 module.exports = Pizza;
